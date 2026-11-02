@@ -1,36 +1,17 @@
 
-import { useEffect, useState } from 'react';
-import { supabase } from './supabase';
-
 export default function App() {
-  const [status, setStatus] = useState('Testing connection...');
-
-  useEffect(() => {
-    async function testConnection() {
-      try {
-        const { error } = await supabase.auth.getSession();
-
-        if (error) {
-          setStatus('Supabase error: ' + error.message);
-        } else {
-          setStatus('React is working. Supabase connection is responding!');
-        }
-      } catch (error) {
-        setStatus('Error: ' + error.message);
-      }
-    }
-
-    testConnection();
-  }, []);
-
   return (
-    <main style={{
-      padding: '30px',
-      fontFamily: 'Arial',
-      textAlign: 'center'
+    <div style={{
+      background: '#101d35',
+      color: 'white',
+      minHeight: '100vh',
+      padding: '40px',
+      textAlign: 'center',
+      fontFamily: 'Arial'
     }}>
-      <h1>Staff Attendance System</h1>
-      <p>{status}</p>
-    </main>
+      <h1>STAFF ATTENDANCE SYSTEM</h1>
+      <h2>THE WEBSITE IS WORKING!</h2>
+      <p>We are rebuilding your attendance dashboard.</p>
+    </div>
   );
 }

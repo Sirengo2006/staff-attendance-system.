@@ -9,6 +9,7 @@ body {
   font-family: Arial, sans-serif;
   background: #f1f5f9;
   color: #172033;
+  min-height: 100vh;
 }
 
 .app {
@@ -17,48 +18,21 @@ body {
   padding: 20px;
 }
 
-.header {
+.topbar {
   background: #101d35;
   color: white;
   padding: 24px;
   border-radius: 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 15px;
+  margin-bottom: 20px;
 }
 
-.logo {
-  background: #16a085;
-  padding: 15px;
-  border-radius: 12px;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.header h1 {
-  font-size: 22px;
-}
-
-.header p {
+.topbar p {
   color: #cbd5e1;
   margin-top: 6px;
-}
-
-.clock {
-  background: linear-gradient(135deg, #087f70, #16a085);
-  color: white;
-  text-align: center;
-  padding: 30px;
-  border-radius: 16px;
-  margin: 20px 0;
-}
-
-.clock h2 {
-  font-size: 42px;
-}
-
-.clock p {
-  margin-top: 8px;
 }
 
 .panel {
@@ -70,60 +44,70 @@ body {
 }
 
 .panel h2 {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   color: #101d35;
 }
 
-.panel p {
-  margin-bottom: 12px;
+.login {
+  max-width: 450px;
+  margin: 60px auto;
 }
 
-select, textarea {
+label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input {
   width: 100%;
   padding: 14px;
   border: 1px solid #cbd5e1;
   border-radius: 9px;
-  margin: 12px 0;
+  margin-bottom: 10px;
   font-size: 16px;
-  background: white;
-}
-
-textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-.buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 12px;
 }
 
 button {
   border: none;
-  padding: 14px 20px;
+  padding: 13px 18px;
   border-radius: 9px;
   background: #101d35;
   color: white;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
+  margin: 5px 5px 5px 0;
 }
 
-.buttons button {
-  flex: 1;
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.sign-in {
-  background: #16a085;
+.staff-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.sign-out {
-  background: #e05252;
+.staff-row p {
+  margin: 5px 0;
+  color: #64748b;
 }
 
-button:active {
-  opacity: 0.8;
+.staff-row small {
+  color: #087f70;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .message {
@@ -132,12 +116,7 @@ button:active {
   background: #e0f2fe;
   border-radius: 8px;
   color: #075985;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #64748b;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 480px) {
@@ -145,15 +124,16 @@ footer {
     padding: 12px;
   }
 
-  .header h1 {
-    font-size: 18px;
-  }
-
-  .clock h2 {
-    font-size: 34px;
+  .topbar {
+    padding: 18px;
   }
 
   .panel {
     padding: 18px;
   }
-}
+
+  .staff-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  }

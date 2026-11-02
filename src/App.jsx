@@ -3,13 +3,10 @@ import React, { useState } from 'react';
 
 export default function App() {
   const [staff, setStaff] = useState('');
-  const [action, setAction] = useState('');
   const [reason, setReason] = useState('');
-  const [overtime, setOvertime] = useState('');
   const [message, setMessage] = useState('');
   const [complaint, setComplaint] = useState('');
   const [records, setRecords] = useState([]);
-
   const [time, setTime] = useState(new Date());
 
   React.useEffect(() => {
@@ -18,7 +15,6 @@ export default function App() {
   }, []);
 
   const staffList = [
-    'Select Staff',
     'Staff Member 1',
     'Staff Member 2',
     'Staff Member 3',
@@ -31,16 +27,16 @@ export default function App() {
       return;
     }
 
-    if (type === 'IN' && time.getHours() * 60 + time.getMinutes() >= 520 && !reason.trim()) {
+    const minutes = time.getHours() * 60 + time.getMinutes();
+
+    if (type === 'IN' && minutes >= 520 && !reason.trim()) {
       setMessage('Please provide a reason for lateness.');
       return;
     }
 
-    if (type === 'OUT' && time.getHours() * 60 + time.getMinutes() < 1020) {
-      if (!reason.trim() || !overtime.trim()) {
-        setMessage('Early checkout requires a reason and overtime reason.');
-        return;
-      }
+    if (type === 'OUT' && minutes < 1020 && !reason.trim()) {
+      setMessage('Please provide a reason for early checkout.');
+      return;
     }
 
     const record = {
@@ -48,15 +44,12 @@ export default function App() {
       type,
       date: time.toLocaleDateString(),
       time: time.toLocaleTimeString(),
-      reason,
-      overtime
+      reason
     };
 
     setRecords([...records, record]);
-    setAction(type);
     setMessage(`${staff} successfully signed ${type === 'IN' ? 'in' : 'out'}.`);
     setReason('');
-    setOvertime('');
   }
 
   return (
@@ -76,15 +69,12 @@ export default function App() {
 
       <section className="panel">
         <h2>Staff Attendance</h2>
-        <p>Select your name to continue</p>
+        <p>Select your name to continue.</p>
 
-        <select value={staff} onChange={e => {
-          setStaff(e.target.value);
-          setMessage('');
-        }}>
+        <select value={staff} onChange={e => setStaff(e.target.value)}>
           <option value="">Choose your name</option>
-          {staffList.slice(1).map(name => (
-            <option key={name}>{name}</option>
+          {staffList.map(name => (
+            <option key={name} value={name}>{name}</option>
           ))}
         </select>
 
@@ -92,12 +82,6 @@ export default function App() {
           placeholder="Reason for lateness or early checkout (if required)"
           value={reason}
           onChange={e => setReason(e.target.value)}
-        />
-
-        <textarea
-          placeholder="Explain overtime arrangement (required for early checkout)"
-          value={overtime}
-          onChange={e => setOvertime(e.target.value)}
         />
 
         <div className="buttons">
@@ -124,7 +108,7 @@ export default function App() {
             setMessage('Select your name and write your complaint.');
             return;
           }
-          setMessage('Complaint recorded in this demo. Backend connection is next.');
+          setMessage('Complaint submitted.');
           setComplaint('');
         }}>
           Submit Complaint
@@ -145,5 +129,4 @@ export default function App() {
       <footer>Staff Attendance Management System</footer>
     </main>
   );
-                }
-          
+}

@@ -1,0 +1,159 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #172033;
+}
+
+.app {
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+}
+
+.header {
+  background: #101d35;
+  color: white;
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  background: #16a085;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header h1 {
+  font-size: 22px;
+}
+
+.header p {
+  color: #cbd5e1;
+  margin-top: 6px;
+}
+
+.clock {
+  background: linear-gradient(135deg, #087f70, #16a085);
+  color: white;
+  text-align: center;
+  padding: 30px;
+  border-radius: 16px;
+  margin: 20px 0;
+}
+
+.clock h2 {
+  font-size: 42px;
+}
+
+.clock p {
+  margin-top: 8px;
+}
+
+.panel {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px #0000000d;
+}
+
+.panel h2 {
+  margin-bottom: 10px;
+  color: #101d35;
+}
+
+.panel p {
+  margin-bottom: 12px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  margin: 12px 0;
+  font-size: 16px;
+  background: white;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+button {
+  border: none;
+  padding: 14px 20px;
+  border-radius: 9px;
+  background: #101d35;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.buttons button {
+  flex: 1;
+}
+
+.sign-in {
+  background: #16a085;
+}
+
+.sign-out {
+  background: #e05252;
+}
+
+button:active {
+  opacity: 0.8;
+}
+
+.message {
+  margin-top: 15px;
+  padding: 12px;
+  background: #e0f2fe;
+  border-radius: 8px;
+  color: #075985;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 12px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .clock h2 {
+    font-size: 34px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+}
